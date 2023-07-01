@@ -7,8 +7,8 @@
 
 using namespace std;
 
-# define N_ITERS 20000
-# define N_PARTICLES 100
+# define N_ITERS 1000
+# define N_PARTICLES 1000
 # define L 10.
 
 # define NATURAL 1
