@@ -60,7 +60,8 @@ int main(){
 
     for(int i=1; i<16; i++){
         Set_Initial_Values(Y);
-        Y[4] = (1. - 1./(pow(10,i))) * C;
+
+        Y[4] = sqrt(1. - 1./pow(10,2*i))*C;
         double gamma = 1./sqrt(1. - Y[4]*Y[4]/(C*C));
         Y[0] = gamma*m_e*Y[4]/e;            // set x pos to radius value   
 
@@ -81,7 +82,7 @@ int main(){
 
             fdata_trajectory << t << " " << Y[0]/x_start << " " << Y[1]/x_start << " " << Y[2]/x_start << endl;
         }
-        cout << i << " " << MAE/(n) << endl;
+        cout << i << " " << gamma << " " << MAE/(n) << endl;
         fdata << i << " " << MAE/(n) << endl;
         fdata_trajectory << endl << endl;
     }
