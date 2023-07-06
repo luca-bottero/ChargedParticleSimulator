@@ -50,24 +50,24 @@ int main(){
 
     double x_start = Y[0];     
 
+    cout << Y[4] << " " << gamma << endl;
 
     t_fin = 2*M_PI*m_e/(e)*gamma;
 
-    for (int i=4; i < 1100000; i*=2){
-        dt = (t_fin - t_in)/(double) i;
+    for (int i=1; i < 41; i++){
+        dt = (t_fin - t_in)/(double) 100;
 
         t = t_in;
 
-        Set_Initial_Values(Y);
-        Y[4] = sqrt(1. - 0.01) * C;
-        double gamma = 1./sqrt(1. - Y[4]*Y[4]/(C*C));
-        Y[0] = gamma*m_e*Y[4]/e;
-
-        for (int j = 0; j < i; j++){
+        for (int j = 0; j < 100*i; j++){
             Boris2ndOrderStep(t, dt, alpha, Y, Neq, E_Field, B_Field);
             // cout << j << endl;
             t += dt;
         }
+        cout << i << " " << dt << " " << Y[0] << " " << Y[1] << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
+        cout << " " << atan2(Y[1],Y[0]) << endl;
+        cout << Y[0] << " " << Y[1] << " " << t/t_fin << endl;
+
         // i  dt   r-r_0   phi   dist
         fdata << i << " " << dt << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
         fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start)) << endl;        
@@ -86,60 +86,21 @@ int main(){
 
     t_fin = 2*M_PI*m_e/(e)*gamma;
 
-    for (int i=4; i < 1100000; i*=2){
-        dt = (t_fin - t_in)/(double) i;
+    for (int i=1; i < 41; i++){
+        dt = (t_fin - t_in)/(double) 100;
 
         t = t_in;
 
-        Set_Initial_Values(Y);
-        Y[4] = sqrt(1. - 1./1e8) * C;
-        double gamma = 1./sqrt(1. - Y[4]*Y[4]/(C*C));
-        Y[0] = gamma*m_e*Y[4]/e;
-
-        for (int j = 0; j < i; j++){
+        for (int j = 0; j < 100*i; j++){
             Boris2ndOrderStep(t, dt, alpha, Y, Neq, E_Field, B_Field);
             t += dt;
         }
+        cout << i << " " << dt << " " << Y[0] << " " << Y[1] << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
+        cout << " " << atan2(Y[1],Y[0]) << endl;
 
         fdata << i << " " << dt << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
-        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start)) << endl;        
+        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start)) << endl;
     }
-
-    fdata << endl << endl;
-    cout << endl;
-
-    // gamma = 10^6
-    Set_Initial_Values(Y);
-    Y[4] = sqrt(1. - 1./1e12) * C;
-
-    gamma = 1./sqrt(1. - Y[4]*Y[4]/(C*C));
-    Y[0] = gamma*m_e*Y[4]/e;            // set x pos to radius value   
-
-    x_start = Y[0];     
-
-    t_fin = 2*M_PI*m_e/(e)*gamma;
-
-    for (int i=4; i < 1100000; i*=2){
-        dt = (t_fin - t_in)/(double) i;
-
-        t = t_in;
-
-        Set_Initial_Values(Y);
-        Y[4] = sqrt(1. - 1./1e12) * C;
-        double gamma = 1./sqrt(1. - Y[4]*Y[4]/(C*C));
-        Y[0] = gamma*m_e*Y[4]/e;
-
-        for (int j = 0; j < i; j++){
-            Boris2ndOrderStep(t, dt, alpha, Y, Neq, E_Field, B_Field);
-            t += dt;
-        }
-
-        fdata << i << " " << dt << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
-        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start)) << endl;        
-    }
-
-
-
 }
 
 
