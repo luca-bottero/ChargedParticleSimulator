@@ -70,7 +70,9 @@ int main(){
         }
         // i  dt   r-r_0   phi   dist
         fdata << i << " " << dt << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
-        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start)) << endl;        
+        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start));
+        fdata << " " << abs(1./sqrt(1. - (Y[3]*Y[3] + Y[4]*Y[4])/(C*C)) - 10.)/10. << " " << abs(Y[1]) << endl;    
+        
     }
     fdata << endl << endl;
     cout << endl;
@@ -102,7 +104,9 @@ int main(){
         }
 
         fdata << i << " " << dt << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
-        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start)) << endl;        
+        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start));
+        fdata << " " << abs(1./sqrt(1. - (Y[3]*Y[3] + Y[4]*Y[4])/(C*C)) - 1e4)/1e4 << " " << abs(Y[1]) << endl;    
+        
     }
 
     fdata << endl << endl;
@@ -135,7 +139,8 @@ int main(){
         }
 
         fdata << i << " " << dt << " " << abs(sqrt(Y[0]*Y[0] + Y[1]*Y[1]) - x_start);
-        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start)) << endl;        
+        fdata << " " << abs(atan2(Y[1], Y[0])) << " " << sqrt(Y[1]*Y[1] + (Y[0] - x_start)*(Y[0] - x_start));
+        fdata << " " << abs(1./sqrt(1. - (Y[3]*Y[3] + Y[4]*Y[4])/(C*C)) - 1e6)/1e6 << " " << abs(Y[1]) << endl;    
     }
 
 

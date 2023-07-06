@@ -1,1 +1,1 @@
-gnuplot radius.gp; gnuplot phase_shift.gp; gnuplot distance.gp
+gnuplot radius.gp; gnuplot phase_shift.gp; gnuplot distance.gp; gnuplot gamma.gp; gnuplot y.gp
